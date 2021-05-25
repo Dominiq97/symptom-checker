@@ -1,5 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import generic
+import sys
+import os
 
 from .forms import (
     SymptomFormset,
@@ -9,8 +11,10 @@ from .forms import (
 )
 from .models import Symptom, Author
 
+val=None
 
 def create_symptom_normal(request):
+    global val
     template_name = 'store/create_normal.html'
     heading_message = 'Formset Demo'
     if request.method == 'GET':
@@ -22,13 +26,25 @@ def create_symptom_normal(request):
                 name = form.cleaned_data.get('name')
                 if name:
                     Symptom(name=name).save()
-            print(formset.cleaned_data)
-            return redirect('store:symptom_list')
+            str = '';
+            for i in formset.cleaned_data:
+                str = str+' '+i['name']
+            print(str)
+            command = 'python ../sc_scripts\\symptom-checker.py '+str
+            response = os.popen(command)
+            def val():
+                return response.read()
+            return redirect('store:result')
 
     return render(request, template_name, {
         'formset': formset,
         'heading': heading_message,
     })
+
+def result(request):
+    template_name='store/result.html'
+    res = val();
+    return render(request, template_name,{'res':res});
 
 
 class SymptomListView(generic.ListView):
