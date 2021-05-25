@@ -1,0 +1,19 @@
+# Byte complied files
+*.pyc
+
+# Virtual env
+Scripts/*
+Lib/*
+Include/*
+pyenv/*
+
+pyvenv.cfg
+
+# Local git config
+.gitconfig
+
+# db files
+*.sqlite3
+*.sqlite
+
+.DS_Store
