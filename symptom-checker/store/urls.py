@@ -1,19 +1,19 @@
 from django.urls import re_path
 
 from .views import (
-    create_book_normal,
-    create_book_model_form,
-    create_book_with_authors,
-    BookListView,
+    create_symptom_normal,
+    create_symptom_model_form,
+    create_symptom_with_authors,
+    SymptomListView,
 )
 
 app_name = 'store'
 
 urlpatterns = [
 
-    re_path(r'^book/create_normal', create_book_normal, name='create_book_normal'),
-    re_path(r'^book/create_model', create_book_model_form, name='create_book_model_form'),
-    re_path(r'^book/create_with_author', create_book_with_authors, name='create_book_with_authors'),
-    re_path(r'^book/list', BookListView.as_view(), name='book_list'),
+    re_path(r'^symptom/create_normal', create_symptom_normal, name='create_symptom_normal'),
+    re_path(r'^symptom/create_model', create_symptom_model_form, name='create_symptom_model_form'),
+    re_path(r'^symptom/create_with_author', create_symptom_with_authors, name='create_symptom_with_authors'),
+    re_path(r'^symptom/list', SymptomListView.as_view(), name='symptom_list'),
 
 ]

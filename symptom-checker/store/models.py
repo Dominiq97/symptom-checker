@@ -1,13 +1,12 @@
 from django.db import models
 
 
-class Book(models.Model):
+class Symptom(models.Model):
 
     name = models.CharField(max_length=255)
-    isbn_number = models.CharField(max_length=13)
 
     class Meta:
-        db_table = 'book'
+        db_table = 'symptom'
 
     def __str__(self):
         return self.name
@@ -19,8 +18,8 @@ class Book(models.Model):
 class Author(models.Model):
 
     name = models.CharField(max_length=255)
-    book = models.ForeignKey(
-        Book,
+    symptom = models.ForeignKey(
+        Symptom,
         related_name='authors', on_delete=models.SET_NULL,
         null=True)
 

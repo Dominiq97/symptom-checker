@@ -1,45 +1,45 @@
 from django import forms
 from django.forms import (formset_factory, modelformset_factory)
 
-from .models import (Book, Author)
+from .models import (Symptom, Author)
 
 
-class BookForm(forms.Form):
+class SymptomForm(forms.Form):
     name = forms.CharField(
-        label='Book Name',
+        label='Symptom Name',
         widget=forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter Book Name here'
+            'placeholder': 'Enter Symptom Name here'
         })
     )
 
 
-class BookModelForm(forms.ModelForm):
+class SymptomModelForm(forms.ModelForm):
 
     class Meta:
-        model = Book
+        model = Symptom
         fields = ('name', )
         labels = {
-            'name': 'Book Name'
+            'name': 'Symptom Name'
         }
         widgets = {
             'name': forms.TextInput(attrs={
                 'class': 'form-control',
-                'placeholder': 'Enter Book Name here'
+                'placeholder': 'Enter Symptom Name here'
                 }
             )
         }
 
 
-BookFormset = formset_factory(BookForm)
-BookModelFormset = modelformset_factory(
-    Book,
+SymptomFormset = formset_factory(SymptomForm)
+SymptomModelFormset = modelformset_factory(
+    Symptom,
     fields=('name', ),
     extra=1,
     widgets={
         'name': forms.TextInput(attrs={
             'class': 'form-control',
-            'placeholder': 'Enter Book Name here'
+            'placeholder': 'Enter Symptom Name here'
             }
         )
     }

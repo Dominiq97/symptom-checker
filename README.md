@@ -38,14 +38,14 @@ python manage.py runserver
 
 The project contains three routes namely
 
-* /store/book/create_normal
+* /store/symptom/create_normal
 
-This is the demo for adding multiple books using normal forms
+This is the demo for adding multiple symptoms using normal forms
 
-* /store/book/create_model
+* /store/symptom/create_model
 
-This is the demo for adding multiple books using model forms
+This is the demo for adding multiple symptoms using model forms
 
-* /store/book/create_with_author
+* /store/symptom/create_with_author
 
-This is the demo for adding a book with multiple author, both using model forms
+This is the demo for adding a symptom with multiple author, both using model forms

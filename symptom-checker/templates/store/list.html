@@ -3,13 +3,13 @@
 {% block container %}
 <table class="table">
     <tr>
-        <th>Book</th>
+        <th>Symptom</th>
         <th>Author</th>
     </tr>
-{% for book in books %}
+{% for symptom in symptoms %}
     <tr>
-        <td>{{book.name}}</td>
-        <td>{{book.get_authors}}</td>
+        <td>{{symptom.name}}</td>
+        <td>{{symptom.get_authors}}</td>
     </tr>
 {% endfor %}
 </table>
