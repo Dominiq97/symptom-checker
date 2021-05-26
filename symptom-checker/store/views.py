@@ -40,10 +40,12 @@ def create_diagnosis(request):
         'heading': heading_message,
     })
 
-
+# functia result
 def result(request):
     df = pd.read_csv('sc_scripts/dataset_prelucrat.csv',engine='python')
     df = df.fillna(0)
+
+
 
     fill = df['Disease'].iloc[0]
     for i in range(1,1866):
