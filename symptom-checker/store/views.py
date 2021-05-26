@@ -10,12 +10,10 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 import sys
-
 from .forms import SymptomFormset
-
 from .models import Symptom
 
-val=None
+val=None #valoare globala pt a lua variabile dintr o functie in alta
 
 def create_diagnosis(request):
     global val
@@ -227,7 +225,7 @@ def result(request):
 
 
     # query = 'I have anxiety and fatigue'
-    res = val()
+    res = val() # ia resultatu cu val() si l duce in result.html
     result = predict_disease(res)
 
     template_name='store/result.html'
@@ -235,7 +233,6 @@ def result(request):
 
 
 class SymptomListView(generic.ListView):
-
     model = Symptom
     context_object_name = 'symptoms'
     template_name = 'store/list.html'
