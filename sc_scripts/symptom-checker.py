@@ -205,7 +205,7 @@ algo_test_scores={}
 #building the model at k value 2
 test_scores={}
 train_scores={}
-for i in range(2,4,2):
+for i in range(2,3,2):
     kf = KFold(n_splits = i)
     sum_train = 0
     sum_test = 0
@@ -250,9 +250,6 @@ sample_x = [i/52 if i ==52 else i/24 if i==24 else i*0 for i in range(len(featur
 
 sample_x = np.array(sample_x).reshape(1,len(sample_x))
 # print(gbm.predict(sample_x))
-
-# print(gbm.predict_proba(sample_x))
-# print(gbm.__getstate__())
 
 symptoms = x.columns
 

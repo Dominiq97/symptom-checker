@@ -4,12 +4,10 @@
 <table class="table">
     <tr>
         <th>Symptom</th>
-        <th>Author</th>
     </tr>
 {% for symptom in symptoms %}
     <tr>
         <td>{{symptom.name}}</td>
-        <td>{{symptom.get_authors}}</td>
     </tr>
 {% endfor %}
 </table>

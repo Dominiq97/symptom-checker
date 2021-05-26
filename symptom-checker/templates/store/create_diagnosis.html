@@ -4,29 +4,33 @@
 {% if heading %}
 <h3>{{heading}}</h3>
 {% endif %}
-<form class="form-horizontal" method="POST" action="">
-    {% csrf_token %}
-{{ formset.management_form }}
-{% for form in formset %}
-<div class="row form-row spacer">
-    <div class="col-2">
-        <label>{{form.name.label}}</label>
-    </div>
-    <div class="col-4">
-        <div class="input-group">
-            {{form.name}}
-            <div class="input-group-append">
-                <button class="btn btn-success add-form-row">+</button>
+<div id="loading">
+    <form class="form-horizontal" method="POST" action="">
+        {% csrf_token %}
+    {{ formset.management_form }}
+    {% for form in formset %}
+    <div class="row form-row spacer">
+        <div class="col-2">
+            <label>{{form.name.label}}</label>
+        </div>
+        <div class="col-4">
+            <div class="input-group">
+                {{form.name}}
+                <div class="input-group-append">
+                    <button class="btn btn-success add-form-row">+</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
-{% endfor %}
-<div class="row spacer">
-    <div class="col-4 offset-2">
-        <button type="submit" class="btn btn-block btn-primary">Create</button>
+    {% endfor %}
+    <div class="row spacer">
+        <div class="col-4 offset-2">
+            <button type="submit" class="btn btn-block btn-primary" onclick="do_heavy_lifting('argument');">Create</button>
+        </div>
     </div>
 </div>
+
+
 </form>
 {% endblock %}
 
@@ -92,6 +96,30 @@ $(document).on('click', '.remove-form-row', function(e){
     deleteForm('form', $(this));
     return false;
 });
+
+function gen_uuid() {
+    var uuid = ""
+    for (var i=0; i < 32; i++) {
+        uuid += Math.floor(Math.random() * 16).toString(16);
+    }
+    return uuid
+}
+
+// Add upload progress for multipart forms.
+function do_heavy_lifting(argument) {
+    $.ajax({
+        type: 'GET',
+        data: { argument: argument }, // if necesarry
+        url: '/heavy_lifting_django_view_url/',
+        beforeSend: function() {
+            $('#loading').show();
+        },
+        success: function(data) {
+            redirect
+        },
+        cache: false
+    });
+}
 
 </script>
 {% endblock %}
