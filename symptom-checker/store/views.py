@@ -39,7 +39,7 @@ def create_diagnosis(request):
         'formset': formset,
         'heading': heading_message,
     })
-
+#alt com
 
 def result(request):
     df = pd.read_csv('sc_scripts/dataset_prelucrat.csv',engine='python')
