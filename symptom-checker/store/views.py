@@ -45,6 +45,8 @@ def result(request):
     df = pd.read_csv('sc_scripts/dataset_prelucrat.csv',engine='python')
     df = df.fillna(0)
 
+
+
     fill = df['Disease'].iloc[0]
     for i in range(1,1866):
         if df['Disease'].iloc[i] == 0:
