@@ -42,7 +42,7 @@ def create_diagnosis(request):
 
 
 def result(request):
-    df = pd.read_csv('C:\\Users\\gigel\\Desktop\\facultate\\Software Engineering\\symptom-checker\\sc_scripts\\dataset_prelucrat.csv',engine='python')
+    df = pd.read_csv('sc_scripts/dataset_prelucrat.csv',engine='python')
     df = df.fillna(0)
 
     fill = df['Disease'].iloc[0]
@@ -87,9 +87,9 @@ def result(request):
     from sklearn.tree import DecisionTreeClassifier
     from sklearn.ensemble import GradientBoostingClassifier
 
-    input_data = pd.read_csv('C://Users//gigel//Desktop//facultate//Training.csv',engine='python')
+    input_data = pd.read_csv('sc_scripts/Training.csv',engine='python')
     # print(input_data.head())
-    test_data = pd.read_csv('C://Users//gigel//Desktop//facultate//Testing.csv',engine='python')
+    test_data = pd.read_csv('sc_scripts/Testing.csv',engine='python')
     # print(test_data.head())
 
     # print(input_data.shape)
